@@ -1,0 +1,72 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .movie {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .movie h2 {
+            margin-top: 0;
+            color: #555;
+        }
+        .movie a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .movie a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% comment %} {% block content %} {% endcomment %}
+{% comment %} <div class="container">
+    <h1>Welcome to the Movie Review Website</h1>
+    <!-- User Registration Form -->
+    <h2>Create New User</h2>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <button class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></button>
+    </form>
+    <!-- login.html -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></button>
+    </form>
+</div>
+{% endblock %}
+ </div> {% endcomment %}
+</body>
+</html>

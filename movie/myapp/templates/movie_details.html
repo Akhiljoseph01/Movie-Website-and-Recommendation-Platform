@@ -1,0 +1,17 @@
+<!-- movie_detail.html -->
+
+<h2>{{ movie.title }}</h2>
+<!-- Display movie details -->
+<hr>
+<h3>Reviews:</h3>
+{% for review in reviews %}
+    <div>
+        <p><strong>User:</strong> {{ review.user.username }}</p>
+        <p><strong>Rating:</strong> {{ review.rating }}</p>
+        <p><strong>Comment:</strong> {{ review.comment }}</p>
+        <p><strong>Posted At:</strong> {{ review.created_at }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>No reviews yet.</p>
+{% endfor %}

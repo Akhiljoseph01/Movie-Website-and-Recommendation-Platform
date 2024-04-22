@@ -1,0 +1,64 @@
+        <!-- Section-->
+        <section class="py-2">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+
+
+
+                    {% for movie in movies %}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="{{ movie.image.url }}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-2">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="card-title">{{ movie.title }}</h5>
+                                    <!-- Product price-->
+                                    <!-- $40.00 - $80.00 -->
+                                    {{ movie.category }}
+
+                                    <br/>
+                                    <!-- ID: {{ movie.id }} -->
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    <a type="{{ movie.id }}" class="btn btn-outline-danger mt-auto" id="add-watchlist">Add To Watchlist</a></div>
+                            </div>
+                            <br>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="text-center">Reviews</h3>
+                                    <form action="{% url 'add_review' movie.id %}" method="post">
+                                    {% csrf_token %}
+                                    <label for="comment">Review</label>
+                                    <textarea name="comment" id="comment" cols="30" rows="5" class="form-control"></textarea>
+
+                                    <label for="rating">Rating</label>
+                                    <input type="text" name="rating" class="form-control">
+
+                                    <br>
+                                    <input type="submit" class="btn btn-danger" value="Add Review">
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <ul>
+                                    {% for review in reviews %}
+                                    
+                                        <li>{{ review.comment }} <i>{{ review.user }}</li>
+                                    {% endfor %}
+                                    <a href="{% url 'movie_detail' movie.id %}">View Details</a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+            </div>
+        </section>

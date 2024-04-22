@@ -1,0 +1,45 @@
+{%  extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header-->
+    <header class="bg-danger py-3">
+        <div class="container px-4 px-lg-5 my-3">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Register</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Create Your Account....</p>
+            </div>
+        </div>
+    </header>
+    <br/><br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form method="POST" action="{% url 'register' %}">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-danger">Register</button>
+  
+</form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock %}

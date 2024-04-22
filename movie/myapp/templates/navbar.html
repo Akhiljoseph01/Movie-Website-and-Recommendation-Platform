@@ -1,0 +1,47 @@
+<!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="{% url 'home' %}">Main Project</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <form class="d-flex mx-auto" action="{% url 'search' %}" method="get">
+                <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-danger" type="submit">Search</button>
+                </form>
+                
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+
+                        {% endif %}
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Movie</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'home' %}">All movies</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{% url 'home' %}">Review</a></li>
+                                <li><a class="dropdown-item" href="#!">Latest</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                    <a href="{% url 'watchlist_summary' %}" class="btn btn-outline-danger"><i class="bi-eye-fill me-1"></i>
+                            Watchlist
+                            <span class="badge bg-info text-white ms-1 rounded-pill" id="watchlist_quantity">{{ watchlist|length }}
+                            
+                            </span></a>   
+                    </form>
+                </div>
+            </div>
+        </nav>

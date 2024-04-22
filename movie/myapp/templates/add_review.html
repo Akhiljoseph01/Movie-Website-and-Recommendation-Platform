@@ -1,0 +1,11 @@
+ {% comment %} {% extends 'base.html' %}
+<h2>review</h2> {% endcomment %}
+
+<!-- add_review.html -->
+
+<h2>Add Review for {{ movie.title }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Review</button>
+</form>
